@@ -13,7 +13,7 @@
 %   rhs: assembled right-hand side
 % 
 % Copyright (C) 2009, 2010 Carlo de Falco
-% Copyright (C) 2011, 2017 Rafael Vazquez
+% Copyright (C) 2011, 2017 Rafael Vazquez, edited by Riccardo Saporiti
 %
 %    This program is free software: you can redistribute it and/or modify
 %    it under the terms of the GNU General Public License as published by
