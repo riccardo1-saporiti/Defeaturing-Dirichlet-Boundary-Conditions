@@ -19,7 +19,7 @@
 %   values: values of the nonzero entries
 % 
 % Copyright (C) 2014 Adriano Cortes
-% Copyright (C) 2014, 2017, 2018 Rafael Vazquez
+% Copyright (C) 2014, 2017, 2018 Rafael Vazquez, Edited by Riccardo Saporiti
 %
 %    This program is free software: you can redistribute it and/or modify
 %    it under the terms of the GNU General Public License as published by
