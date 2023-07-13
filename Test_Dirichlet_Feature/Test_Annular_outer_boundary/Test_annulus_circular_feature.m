@@ -134,7 +134,7 @@ function [problem_data, problem_data_0] = determineBC(problem_data)
     % Simplified problem
     problem_data_0.nmnn_sides = [];
     problem_data_0.drchlt_sides = 1:4;
-    problem_data_0.omega_patches = 1:4;
+    problem_data_0.omega_patches = 1:4; %patches of $\Omega_0$ shared among $\Omega_0$ and $\Omega$
     problem_data_0.gamma_sides = cell(9,1); 
-    problem_data_0.gamma_sides(1:4) = {3, 3, 3, 3}; % relative to each patch
+    problem_data_0.gamma_sides(1:4) = {3, 3, 3, 3}; % needed for the estimator; for each of the patches shared among $\Omega_0$ and $\Omega$, specify the position of the boundary that is a subset of $\gamma$ relative to that patch. 
 end
