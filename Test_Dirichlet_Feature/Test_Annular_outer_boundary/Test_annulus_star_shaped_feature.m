@@ -3,7 +3,6 @@ close all
 clc
 epsilon_ref = 1e-2;  
 eps_values =  epsilon_ref ./ 2.^(-5:3); % 0.4./2.^(0:3); % 1e-2 ./ 2.^(-5:6); % 0.4./2.^(0:3); %0.1;
-filename = 'results/test19_drchlt0';
 saveIt = false;
 plotIt = true;
 problem_data.c_diff = @(x, y) ones(size(x));
@@ -12,9 +11,10 @@ r = @( x , y ) sqrt( x .^ 2 + y .^ 2 );
 theta = @( x , y ) atan2( y , x );
 problem_data.f = @(x, y) 2 * r( x , y ) .* cos( theta( x , y ) ); 
 [problem_data, problem_data_0] = determineBC(problem_data);
-problem_data.h = @(x, y, ind) 0 * ( isempty( find( ind == [problem_data_0.gamma_sides{:}] ) ) == 0  ) + 0 * x .* y   ;
-problem_data_0.h = @(x, y, ind) 0 * x .* y ;
-problem_data_0.h_auxiliar = @(x, y, ind) 0 * ( isempty( find( ind == [problem_data_0.gamma_sides{:}] ) ) == 0  ) + 0 * x .* y  ;
+problem_data.h = @(x, y, ind) 0 * ( isempty( find( ind == problem_data.drchlt_sides_inhomogeneous ) ) == 0  ) + 0 * x .* y  ;
+problem_data_0.h = @(x, y, ind) 0 * x .* y  ;
+problem_data_0.h_auxiliar = @( x , y , ind ) 0 * ( isempty( find( ind == [problem_data_0.gamma_sides{:}] ) ) == 0  ) + 0 * x .* y  ;
+
 perturbation_type = 'singular' ; 
 ext = 4;
 
@@ -149,6 +149,8 @@ function [problem_data, problem_data_0] = determineBC(problem_data)
     
     % Exact problem
     problem_data.nmnn_sides = []; 
+    problem_data.drchlt_sides_homogeneous = 2:2:4*nn;
+    problem_data.drchlt_sides_inhomogeneous = 1:2:4*nn;
     problem_data.drchlt_sides = [ 1:2:4*nn  2:2:4*nn ];
     problem_data.gamma_sides = 1:2:4*nn;
     problem_data.omega0_patches = 1:2*nn;
